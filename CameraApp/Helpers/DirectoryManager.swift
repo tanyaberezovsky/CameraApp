@@ -16,6 +16,17 @@ struct DirectoryManager {
     
     init(rootDir: URL = Constants.mediaRootDir) {
         self.rootDir = rootDir
+        createDirIfneeded(dirPath: rootDir)
+    }
+    
+    private func createDirIfneeded(dirPath: URL) {
+        if !FileManager.default.fileExists(atPath: dirPath.path) {
+            do {
+                try FileManager.default.createDirectory(atPath: dirPath.path, withIntermediateDirectories: true, attributes: nil)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

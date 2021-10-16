@@ -9,6 +9,6 @@ import Foundation
 
 struct Constants {
     static public let mediaRootDir: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-
+    static public let thumbnailsDir: URL = Constants.mediaRootDir.appendingPathComponent("Thumbnail", isDirectory: true)
 }
 

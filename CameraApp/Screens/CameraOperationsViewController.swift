@@ -15,6 +15,7 @@ class CameraOperationsViewController: UIViewController {
     //MARK: Public variables
     var fileSaver: FileSaverProtocol = FileSaver()
     var mediaDir: DirectoryManagerProtocol = DirectoryManager()
+    var thumbnailDir: DirectoryManagerProtocol = DirectoryManager(rootDir: Constants.thumbnailsDir)
 
     //MARK: IBOutlets
     @IBOutlet private var cameraButton: UIButton!
@@ -22,13 +23,18 @@ class CameraOperationsViewController: UIViewController {
     @IBOutlet private var photoImageView: UIImageView!
     
     //MARK: Private variables
-    private var videoFilePath: URL {
-        return mediaDir.filePath("video".appedTimestamp(), "mp4")
+    private var imageFilePath: URL {
+        return mediaDir.filePath("camapp".appedTimestamp(), "png")
+    }
+    
+    private var videoFilePath: (video: URL, thumbnail: URL) {
+        let fileName = "camapp".appedTimestamp()
+        let video = mediaDir.filePath(fileName, "mp4")
+        let thumbnail = thumbnailDir.filePath(fileName, "png")
+        return (video, thumbnail)
     }
 
-    private var imageFilePath: URL {
-        return mediaDir.filePath("image".appedTimestamp(), "png")
-    }
+    
 
     //MARK: - Controller lifecycle
 //    override func viewDidLoad() {
@@ -68,10 +74,8 @@ class CameraOperationsViewController: UIViewController {
 //        self.present(self.imagePickerController, animated: true, completion: nil)
     }
 
-    private func printAllMediaFiles() {
-        let fm = FileManager.default
-        let dir = Constants.mediaRootDir
-        let items = try! fm.contentsOfDirectory(atPath: dir.path)
+    private func printAllMediaFiles(_ dir: URL = Constants.mediaRootDir) {
+        let items = try! FileManager.default.contentsOfDirectory(atPath: dir.path)
 
         for item in items {
             print(item)
@@ -109,6 +113,7 @@ extension CameraOperationsViewController: UIImagePickerControllerDelegate {
         }
         
         printAllMediaFiles()
+        printAllMediaFiles(Constants.thumbnailsDir)
     }
     
     private func tryToSaveImage(_ info: [UIImagePickerController.InfoKey : Any]) {
@@ -131,9 +136,26 @@ extension CameraOperationsViewController: UIImagePickerControllerDelegate {
             return
         }
         
-        guard let _ = try? fileSaver.saveVideo(videoURL, path: videoFilePath) else {
-            alert(message: "Photo not get saved.")
+        let videoPaths = videoFilePath
+        guard let _ = try? fileSaver.saveVideo(videoURL, path: videoPaths.video) else {
+            alert(message: "Video not get saved.")
             return
+        }
+        
+        createThumbnail(videoURL) { [weak self] (image) in
+            guard let image = image else { return }
+            guard let _ = try? self?.fileSaver.saveImagePNG(image, path: videoPaths.thumbnail) else {
+                self?.alert(message: "Thumbnail not get saved.")
+                return
+            }
+        }
+    }
+    
+    private func createThumbnail(_ videoURL: URL, completion: @escaping (UIImage?) -> Void) {
+        AVAsset(url: videoURL).generateThumbnail { image in
+            DispatchQueue.main.async {
+                 completion(image)
+            }
         }
     }
 }
