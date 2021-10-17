@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B0A700A271AF88E00075842 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7009271AF88E00075842 /* UIViewController+Extensions.swift */; };
-		2B0A700C271B3AF200075842 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A700B271B3AF200075842 /* String+Extension.swift */; };
+		2B0A700C271B3AF200075842 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A700B271B3AF200075842 /* Date+Extension.swift */; };
 		2B0A700E271B3B1000075842 /* FileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A700D271B3B1000075842 /* FileSaver.swift */; };
 		2B0A7010271B3B4500075842 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A700F271B3B4500075842 /* DirectoryManager.swift */; };
 		2B0A7012271B3C5A00075842 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7011271B3C5A00075842 /* Constants.swift */; };
@@ -16,6 +16,10 @@
 		2B0A7018271B59E000075842 /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7017271B59E000075842 /* GalleryCollectionViewController.swift */; };
 		2B0A701E271B5E0A00075842 /* MediaFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A701D271B5E0A00075842 /* MediaFile.swift */; };
 		2B0A7020271B64C800075842 /* AVAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A701F271B64C800075842 /* AVAsset+Extensions.swift */; };
+		2B0A7022271B6E0500075842 /* MediaFilesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7021271B6E0500075842 /* MediaFilesFactory.swift */; };
+		2B0A705B271C7DA800075842 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705A271C7DA800075842 /* UIImage+Extension.swift */; };
+		2B0A705D271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705C271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift */; };
+		2B0A705F271CB60C00075842 /* FileNameConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705E271CB60C00075842 /* FileNameConverter.swift */; };
 		2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD312719EBC400515DC9 /* AppDelegate.swift */; };
 		2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */; };
 		2B5BAD362719EBC400515DC9 /* CameraOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD352719EBC400515DC9 /* CameraOperationsViewController.swift */; };
@@ -46,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		2B0A7009271AF88E00075842 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		2B0A700B271B3AF200075842 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		2B0A700B271B3AF200075842 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		2B0A700D271B3B1000075842 /* FileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSaver.swift; sourceTree = "<group>"; };
 		2B0A700F271B3B4500075842 /* DirectoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
 		2B0A7011271B3C5A00075842 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -54,6 +58,10 @@
 		2B0A7017271B59E000075842 /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		2B0A701D271B5E0A00075842 /* MediaFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFile.swift; sourceTree = "<group>"; };
 		2B0A701F271B64C800075842 /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
+		2B0A7021271B6E0500075842 /* MediaFilesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFilesFactory.swift; sourceTree = "<group>"; };
+		2B0A705A271C7DA800075842 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		2B0A705C271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraOperationsViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
+		2B0A705E271CB60C00075842 /* FileNameConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameConverter.swift; sourceTree = "<group>"; };
 		2B5BAD2E2719EBC400515DC9 /* CameraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5BAD312719EBC400515DC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,8 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				2B0A7009271AF88E00075842 /* UIViewController+Extensions.swift */,
-				2B0A700B271B3AF200075842 /* String+Extension.swift */,
+				2B0A700B271B3AF200075842 /* Date+Extension.swift */,
 				2B0A701F271B64C800075842 /* AVAsset+Extensions.swift */,
+				2B0A705A271C7DA800075842 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -122,6 +131,7 @@
 				2B0A700D271B3B1000075842 /* FileSaver.swift */,
 				2B0A7011271B3C5A00075842 /* Constants.swift */,
 				2B0A700F271B3B4500075842 /* DirectoryManager.swift */,
+				2B0A705E271CB60C00075842 /* FileNameConverter.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -139,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				2B5BAD352719EBC400515DC9 /* CameraOperationsViewController.swift */,
+				2B0A705C271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift */,
 			);
 			name = CameraOperations;
 			sourceTree = "<group>";
@@ -149,6 +160,7 @@
 				2B0A7017271B59E000075842 /* GalleryCollectionViewController.swift */,
 				2B0A7015271B59BD00075842 /* GalleryCollectionViewCell.swift */,
 				2B0A701D271B5E0A00075842 /* MediaFile.swift */,
+				2B0A7021271B6E0500075842 /* MediaFilesFactory.swift */,
 			);
 			name = Gallery;
 			sourceTree = "<group>";
@@ -336,13 +348,17 @@
 				2B0A700A271AF88E00075842 /* UIViewController+Extensions.swift in Sources */,
 				2B5BAD362719EBC400515DC9 /* CameraOperationsViewController.swift in Sources */,
 				2B0A7020271B64C800075842 /* AVAsset+Extensions.swift in Sources */,
+				2B0A705D271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */,
-				2B0A700C271B3AF200075842 /* String+Extension.swift in Sources */,
+				2B0A705F271CB60C00075842 /* FileNameConverter.swift in Sources */,
+				2B0A700C271B3AF200075842 /* Date+Extension.swift in Sources */,
 				2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */,
 				2B0A7018271B59E000075842 /* GalleryCollectionViewController.swift in Sources */,
 				2B0A700E271B3B1000075842 /* FileSaver.swift in Sources */,
 				2B0A7010271B3B4500075842 /* DirectoryManager.swift in Sources */,
+				2B0A7022271B6E0500075842 /* MediaFilesFactory.swift in Sources */,
 				2B0A7016271B59BD00075842 /* GalleryCollectionViewCell.swift in Sources */,
+				2B0A705B271C7DA800075842 /* UIImage+Extension.swift in Sources */,
 				2B0A7012271B3C5A00075842 /* Constants.swift in Sources */,
 				2B0A701E271B5E0A00075842 /* MediaFile.swift in Sources */,
 			);

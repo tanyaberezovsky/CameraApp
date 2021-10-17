@@ -8,6 +8,12 @@
 import UIKit
 
 class GalleryCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    
+    public func config(mediaObject: MediaFileProtocol) {
+        imageView.image = mediaObject.image
+        nameLabel.text = mediaObject.imageDescription
+    }
 }
+

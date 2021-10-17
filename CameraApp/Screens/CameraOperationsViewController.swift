@@ -7,9 +7,7 @@
 
 import UIKit
 import MobileCoreServices
-//import UniformTypeIdentifiers replace kUTTypeImage with UTType.image
 import AVKit
-
 
 class CameraOperationsViewController: UIViewController {
     //MARK: Public variables
@@ -19,18 +17,24 @@ class CameraOperationsViewController: UIViewController {
 
     //MARK: IBOutlets
     @IBOutlet private var cameraButton: UIButton!
-    @IBOutlet private var galleryButton: UIButton!
-    @IBOutlet private var photoImageView: UIImageView!
     
     //MARK: Private variables
+    private var segueShowGallery: String {
+        return Constants.Segues.showGallery.rawValue
+    }
+    
+    private var timestampStr: String {
+        return "\(NSDate().timeIntervalSince1970)"
+    }
+    
     private var imageFilePath: URL {
-        return mediaDir.filePath("camapp".appedTimestamp(), "png")
+        return mediaDir.filePath(timestampStr, Constants.FileExtention.png.rawValue)
     }
     
     private var videoFilePath: (video: URL, thumbnail: URL) {
-        let fileName = "camapp".appedTimestamp()
-        let video = mediaDir.filePath(fileName, "mp4")
-        let thumbnail = thumbnailDir.filePath(fileName, "png")
+        let fileName = timestampStr
+        let video = mediaDir.filePath(fileName, Constants.FileExtention.mp4.rawValue)
+        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.png.rawValue)
         return (video, thumbnail)
     }
 
@@ -47,13 +51,23 @@ class CameraOperationsViewController: UIViewController {
 //
 //    }
     
+    //MARK: Prepare segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueShowGallery {
+           if let viewController = segue.destination as? GalleryCollectionViewController {
+               viewController.files = MediaFilesFactory(rootDir: Constants.mediaRootDir, thumbnailDir: Constants.thumbnailsDir).create()
+           }
+       }
+    }
+    
     //MARK: - Actions
     @IBAction func openCamera() {
         tryOpenCamera()
     }
     @IBAction func openGallery() {
-        tryOpenGallery()
+        performSegue(withIdentifier: segueShowGallery, sender: self)
     }
+    
     //MARK: - Private functions
     private func tryOpenCamera() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera)
@@ -64,72 +78,31 @@ class CameraOperationsViewController: UIViewController {
         let picker = UIImagePickerController()
         picker.sourceType = .camera
         picker.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
-        picker.allowsEditing = false
         picker.delegate = self
         present(picker, animated: true)
     }
-    
-    private func tryOpenGallery() {
-//        self.imagePickerController.sourceType = .photoLibrary
-//        self.present(self.imagePickerController, animated: true, completion: nil)
-    }
-
-    private func printAllMediaFiles(_ dir: URL = Constants.mediaRootDir) {
+  
+    func printAllMediaFiles(_ dir: URL = Constants.mediaRootDir) {
         let items = try! FileManager.default.contentsOfDirectory(atPath: dir.path)
 
         for item in items {
             print(item)
         }
     }
-}
-
-extension CameraOperationsViewController: UINavigationControllerDelegate {}
-
-extension CameraOperationsViewController: UIImagePickerControllerDelegate {
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard info[UIImagePickerController.InfoKey.mediaType] != nil else {
-            alert(message: "Something went wrong. Please try latter.")
-            return
-        }
-        
-        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
-
-        dismiss(animated: true, completion: nil)
-        
-        switch mediaType {
-        case kUTTypeImage:
-            tryToSaveImage(info)
-            break
-        case kUTTypeMovie:
-            tryToSaveVideo(info)
-            break
-        default:
-            break
-        }
-        
-        printAllMediaFiles()
-        printAllMediaFiles(Constants.thumbnailsDir)
-    }
-    
-    private func tryToSaveImage(_ info: [UIImagePickerController.InfoKey : Any]) {
+    func tryToSaveImage(_ info: [UIImagePickerController.InfoKey : Any]) {
 
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             alert(message: "Can not save photo.")
             return
         }
 
-        guard let _ = try? fileSaver.saveImagePNG(image, path: imageFilePath) else {
+        guard let _ = try? fileSaver.saveImagePNG(image.fixOrientation(), path: imageFilePath) else {
             alert(message: "Photo not get saved.")
             return
         }
     }
     
-    private func tryToSaveVideo(_ info: [UIImagePickerController.InfoKey : Any]) {
+    func tryToSaveVideo(_ info: [UIImagePickerController.InfoKey : Any]) {
 
         guard let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL else {
             alert(message: "Can not save video.")
@@ -160,4 +133,5 @@ extension CameraOperationsViewController: UIImagePickerControllerDelegate {
     }
 }
 
+extension CameraOperationsViewController: UINavigationControllerDelegate {}
 
