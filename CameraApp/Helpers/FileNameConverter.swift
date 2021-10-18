@@ -8,6 +8,7 @@
 import Foundation
 
 struct FileNameConverter {
+    
     private var fileNameWithTimeStamp: String
      
     init(_ fileNameWithTimeStamp: String){

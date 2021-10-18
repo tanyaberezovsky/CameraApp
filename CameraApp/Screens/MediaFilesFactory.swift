@@ -8,6 +8,7 @@
 import UIKit
 
 struct MediaFilesFactory {
+    
     private let rootDir: URL
     private let thumbnailDir: URL
     
@@ -37,6 +38,7 @@ struct MediaFilesFactory {
         }
     }
     
+    //MARK: Private methods
     private func createVideoFile(_ fileName: String) -> MediaFileProtocol {
        
         let videoFilePath = rootDir.appendingPathComponent(fileName, isDirectory: false)

@@ -20,6 +20,8 @@
 		2B0A705B271C7DA800075842 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705A271C7DA800075842 /* UIImage+Extension.swift */; };
 		2B0A705D271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705C271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift */; };
 		2B0A705F271CB60C00075842 /* FileNameConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705E271CB60C00075842 /* FileNameConverter.swift */; };
+		2B0A7062271CBCE700075842 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7061271CBCE700075842 /* PhotoViewController.swift */; };
+		2B0A7064271CBCF600075842 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7063271CBCF600075842 /* VideoViewController.swift */; };
 		2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD312719EBC400515DC9 /* AppDelegate.swift */; };
 		2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */; };
 		2B5BAD362719EBC400515DC9 /* CameraOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD352719EBC400515DC9 /* CameraOperationsViewController.swift */; };
@@ -62,6 +64,8 @@
 		2B0A705A271C7DA800075842 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		2B0A705C271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraOperationsViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		2B0A705E271CB60C00075842 /* FileNameConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameConverter.swift; sourceTree = "<group>"; };
+		2B0A7061271CBCE700075842 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		2B0A7063271CBCF600075842 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		2B5BAD2E2719EBC400515DC9 /* CameraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5BAD312719EBC400515DC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,8 +132,8 @@
 		2B0A7019271B5AF400075842 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				2B0A700D271B3B1000075842 /* FileSaver.swift */,
 				2B0A7011271B3C5A00075842 /* Constants.swift */,
+				2B0A700D271B3B1000075842 /* FileSaver.swift */,
 				2B0A700F271B3B4500075842 /* DirectoryManager.swift */,
 				2B0A705E271CB60C00075842 /* FileNameConverter.swift */,
 			);
@@ -139,6 +143,7 @@
 		2B0A701A271B5B1900075842 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2B0A7060271CB7A600075842 /* GalleryDetail */,
 				2B0A701C271B5CE800075842 /* Gallery */,
 				2B0A701B271B5CD600075842 /* CameraOperations */,
 			);
@@ -163,6 +168,15 @@
 				2B0A7021271B6E0500075842 /* MediaFilesFactory.swift */,
 			);
 			name = Gallery;
+			sourceTree = "<group>";
+		};
+		2B0A7060271CB7A600075842 /* GalleryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2B0A7061271CBCE700075842 /* PhotoViewController.swift */,
+				2B0A7063271CBCF600075842 /* VideoViewController.swift */,
+			);
+			name = GalleryDetail;
 			sourceTree = "<group>";
 		};
 		2B5BAD252719EBC400515DC9 = {
@@ -347,6 +361,7 @@
 			files = (
 				2B0A700A271AF88E00075842 /* UIViewController+Extensions.swift in Sources */,
 				2B5BAD362719EBC400515DC9 /* CameraOperationsViewController.swift in Sources */,
+				2B0A7064271CBCF600075842 /* VideoViewController.swift in Sources */,
 				2B0A7020271B64C800075842 /* AVAsset+Extensions.swift in Sources */,
 				2B0A705D271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */,
@@ -355,6 +370,7 @@
 				2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */,
 				2B0A7018271B59E000075842 /* GalleryCollectionViewController.swift in Sources */,
 				2B0A700E271B3B1000075842 /* FileSaver.swift in Sources */,
+				2B0A7062271CBCE700075842 /* PhotoViewController.swift in Sources */,
 				2B0A7010271B3B4500075842 /* DirectoryManager.swift in Sources */,
 				2B0A7022271B6E0500075842 /* MediaFilesFactory.swift in Sources */,
 				2B0A7016271B59BD00075842 /* GalleryCollectionViewCell.swift in Sources */,

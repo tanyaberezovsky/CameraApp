@@ -67,6 +67,8 @@ class CameraOperationsViewController: UIViewController {
     @IBAction func openGallery() {
         performSegue(withIdentifier: segueShowGallery, sender: self)
     }
+    @IBAction func unwindToGallery(segue: UIStoryboardSegue){
+    }
     
     //MARK: - Private functions
     private func tryOpenCamera() {

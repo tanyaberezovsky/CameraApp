@@ -122,6 +122,13 @@
                                                 <constraint firstAttribute="height" constant="115" id="jn3-TJ-hC9"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-QX-1aN">
+                                            <rect key="frame" x="30" y="38.5" width="40" height="37.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="Mnr-ys-hAz"/>
+                                                <constraint firstAttribute="height" constant="40" id="y7W-ph-Fue"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20:12" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="6zb-U7-EwV">
                                             <rect key="frame" x="0.0" y="115" width="100" height="35"/>
                                             <constraints>
@@ -133,9 +140,11 @@
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="Fbh-QX-1aN" firstAttribute="centerX" secondItem="Rpx-ec-5Kh" secondAttribute="centerX" id="B6P-3L-kLR"/>
                                         <constraint firstAttribute="trailing" secondItem="6zb-U7-EwV" secondAttribute="trailing" id="Bnq-W5-dWY"/>
                                         <constraint firstItem="Rpx-ec-5Kh" firstAttribute="leading" secondItem="P7I-DW-ox2" secondAttribute="leading" id="Bta-mc-MvD"/>
                                         <constraint firstAttribute="trailing" secondItem="Rpx-ec-5Kh" secondAttribute="trailing" id="Ome-ag-TPa"/>
+                                        <constraint firstItem="Fbh-QX-1aN" firstAttribute="centerY" secondItem="Rpx-ec-5Kh" secondAttribute="centerY" id="RRS-yX-ybF"/>
                                         <constraint firstItem="6zb-U7-EwV" firstAttribute="top" secondItem="Rpx-ec-5Kh" secondAttribute="bottom" id="Rmn-bR-qJg"/>
                                         <constraint firstItem="Rpx-ec-5Kh" firstAttribute="top" secondItem="P7I-DW-ox2" secondAttribute="top" id="p62-KA-QaU"/>
                                         <constraint firstItem="6zb-U7-EwV" firstAttribute="leading" secondItem="P7I-DW-ox2" secondAttribute="leading" id="rsI-oD-GA0"/>
@@ -155,10 +164,58 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Gallery" id="NlC-lh-Yhr"/>
+                    <connections>
+                        <segue destination="LUB-77-BwF" kind="presentation" identifier="showPicture" id="DdL-1P-nfZ"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqt-A0-GGI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1738" y="144"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="49P-f5-v8f">
+            <objects>
+                <viewController id="LUB-77-BwF" customClass="PhotoViewController" customModule="CameraApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WIn-5i-0sR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3pa-B3-zsG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ1-Sj-Rxl">
+                                <rect key="frame" x="374" y="10" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5B8-O8-ITQ"/>
+                                    <constraint firstAttribute="width" constant="30" id="BLz-LY-qkr"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <connections>
+                                    <segue destination="VVT-dt-nrG" kind="unwind" unwindAction="unwindToGalleryWithSegue:" id="6cM-Ac-arL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SY6-hc-ZVQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SY6-hc-ZVQ" firstAttribute="trailing" secondItem="wJ1-Sj-Rxl" secondAttribute="trailing" constant="10" id="Xbk-Kn-Bs7"/>
+                            <constraint firstItem="wJ1-Sj-Rxl" firstAttribute="top" secondItem="SY6-hc-ZVQ" secondAttribute="top" constant="10" id="req-E1-ZKs"/>
+                            <constraint firstItem="3pa-B3-zsG" firstAttribute="top" secondItem="SY6-hc-ZVQ" secondAttribute="top" id="vwZ-NE-1Vv"/>
+                            <constraint firstItem="3pa-B3-zsG" firstAttribute="leading" secondItem="SY6-hc-ZVQ" secondAttribute="leading" id="w4Q-vF-KvJ"/>
+                            <constraint firstItem="SY6-hc-ZVQ" firstAttribute="trailing" secondItem="3pa-B3-zsG" secondAttribute="trailing" id="wTD-Qf-IPb"/>
+                            <constraint firstAttribute="bottom" secondItem="3pa-B3-zsG" secondAttribute="bottom" id="zkv-mn-zfh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="an1-b1-HAa"/>
+                    <connections>
+                        <outlet property="imageView" destination="3pa-B3-zsG" id="sfe-9T-iwg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AWR-Ek-lS1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="VVT-dt-nrG" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2562" y="163"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gQa-4H-fky">
@@ -182,6 +239,8 @@
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="play.square.fill" catalog="system" width="128" height="114"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
