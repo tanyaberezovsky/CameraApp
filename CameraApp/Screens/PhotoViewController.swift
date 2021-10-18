@@ -9,25 +9,15 @@ import UIKit
 
 class PhotoViewController: UIViewController {
 
-    var photoFile: MediaFileProtocol!
+    //MARK: Public variables
+    public var photoFile: MediaFileProtocol!
     
+    //MARK: IBOutlets
     @IBOutlet private var imageView: UIImageView!
     
+    //MARK: Controler Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         imageView.image = photoFile.image
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

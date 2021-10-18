@@ -16,7 +16,7 @@ struct FileNameConverter {
     }
     
     public func description() -> String {
-        return createdDate?.toString(formatter: .long) ?? ""
+        return createdDate?.toString(formatter: .timeOnly) ?? ""
     }
     
     private var createdDate: Date? {

@@ -21,7 +21,6 @@
 		2B0A705D271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705C271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift */; };
 		2B0A705F271CB60C00075842 /* FileNameConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705E271CB60C00075842 /* FileNameConverter.swift */; };
 		2B0A7062271CBCE700075842 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7061271CBCE700075842 /* PhotoViewController.swift */; };
-		2B0A7064271CBCF600075842 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7063271CBCF600075842 /* VideoViewController.swift */; };
 		2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD312719EBC400515DC9 /* AppDelegate.swift */; };
 		2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */; };
 		2B5BAD362719EBC400515DC9 /* CameraOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD352719EBC400515DC9 /* CameraOperationsViewController.swift */; };
@@ -65,7 +64,6 @@
 		2B0A705C271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraOperationsViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		2B0A705E271CB60C00075842 /* FileNameConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameConverter.swift; sourceTree = "<group>"; };
 		2B0A7061271CBCE700075842 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
-		2B0A7063271CBCF600075842 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		2B5BAD2E2719EBC400515DC9 /* CameraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5BAD312719EBC400515DC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				2B0A7061271CBCE700075842 /* PhotoViewController.swift */,
-				2B0A7063271CBCF600075842 /* VideoViewController.swift */,
 			);
 			name = GalleryDetail;
 			sourceTree = "<group>";
@@ -361,7 +358,6 @@
 			files = (
 				2B0A700A271AF88E00075842 /* UIViewController+Extensions.swift in Sources */,
 				2B5BAD362719EBC400515DC9 /* CameraOperationsViewController.swift in Sources */,
-				2B0A7064271CBCF600075842 /* VideoViewController.swift in Sources */,
 				2B0A7020271B64C800075842 /* AVAsset+Extensions.swift in Sources */,
 				2B0A705D271C7F4900075842 /* CameraOperationsViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */,

@@ -6,30 +6,20 @@
 //
 
 import UIKit
+import AVKit
 
 private let reuseIdentifier = "GalleryCell"
 
 class GalleryCollectionViewController: UICollectionViewController {
+    
+    //MARK: Public variables
     public var files: [MediaFileProtocol]!
+   
+    //MARK: Private variables
     private var showPicture: String {
         return Constants.Segues.showPicture.rawValue
     }
-    //TODO: delete all coments
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//
-//    }
 
-
-    // MARK: UICollectionViewDataSource
-
-//    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-    
     //MARK: - Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showPicture {
@@ -57,6 +47,18 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: showPicture, sender: nil)
+        if files[indexPath.row].isVideo() {
+            playVideo(url: files[indexPath.row].url)
+        } else {
+            performSegue(withIdentifier: showPicture, sender: nil)
+        }
+    }
+    
+    //MARK: Private methods
+    private func playVideo(url: URL) {
+        let player = AVPlayer(url: url)
+        let vcPlayer = AVPlayerViewController()
+        vcPlayer.player = player
+        self.present(vcPlayer, animated: true, completion: nil)
     }
 }

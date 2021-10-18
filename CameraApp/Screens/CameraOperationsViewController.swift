@@ -10,6 +10,7 @@ import MobileCoreServices
 import AVKit
 
 class CameraOperationsViewController: UIViewController {
+    
     //MARK: Public variables
     var fileSaver: FileSaverProtocol = FileSaver()
     var mediaDir: DirectoryManagerProtocol = DirectoryManager()
@@ -41,15 +42,10 @@ class CameraOperationsViewController: UIViewController {
     
 
     //MARK: - Controller lifecycle
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        //takePhotoVideo()
-//
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupNavBar()
+    }
     
     //MARK: Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -71,6 +67,13 @@ class CameraOperationsViewController: UIViewController {
     }
     
     //MARK: - Private functions
+    private func setupNavBar() {
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.systemBlue
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]
+    }
+    
     private func tryOpenCamera() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera)
         else {

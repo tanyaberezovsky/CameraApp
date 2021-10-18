@@ -100,7 +100,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="mDF-9n-Isn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aL0-Fc-dDg">
                             <size key="itemSize" width="100" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -122,8 +122,8 @@
                                                 <constraint firstAttribute="height" constant="115" id="jn3-TJ-hC9"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-QX-1aN">
-                                            <rect key="frame" x="30" y="38.5" width="40" height="37.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-QX-1aN">
+                                            <rect key="frame" x="30" y="39" width="40" height="36.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Mnr-ys-hAz"/>
                                                 <constraint firstAttribute="height" constant="40" id="y7W-ph-Fue"/>
@@ -134,8 +134,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="35" id="Qbq-Mo-pnr"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" systemColor="systemBlueColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -155,6 +155,7 @@
                                 <connections>
                                     <outlet property="imageView" destination="Rpx-ec-5Kh" id="SPj-Dp-iXU"/>
                                     <outlet property="nameLabel" destination="6zb-U7-EwV" id="HO8-JB-rKa"/>
+                                    <outlet property="playImageView" destination="Fbh-QX-1aN" id="VGg-AV-4yZ"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -184,13 +185,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ1-Sj-Rxl">
-                                <rect key="frame" x="374" y="10" width="30" height="30"/>
+                                <rect key="frame" x="364" y="10" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5B8-O8-ITQ"/>
-                                    <constraint firstAttribute="width" constant="30" id="BLz-LY-qkr"/>
+                                    <constraint firstAttribute="width" secondItem="wJ1-Sj-Rxl" secondAttribute="height" multiplier="40:30" id="G6N-r8-4jq"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button" image="xmark" catalog="system"/>
                                 <connections>
                                     <segue destination="VVT-dt-nrG" kind="unwind" unwindAction="unwindToGalleryWithSegue:" id="6cM-Ac-arL"/>
                                 </connections>
@@ -200,6 +201,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="SY6-hc-ZVQ" firstAttribute="trailing" secondItem="wJ1-Sj-Rxl" secondAttribute="trailing" constant="10" id="Xbk-Kn-Bs7"/>
+                            <constraint firstItem="wJ1-Sj-Rxl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SY6-hc-ZVQ" secondAttribute="leading" symbolic="YES" id="aWf-or-WOD"/>
                             <constraint firstItem="wJ1-Sj-Rxl" firstAttribute="top" secondItem="SY6-hc-ZVQ" secondAttribute="top" constant="10" id="req-E1-ZKs"/>
                             <constraint firstItem="3pa-B3-zsG" firstAttribute="top" secondItem="SY6-hc-ZVQ" secondAttribute="top" id="vwZ-NE-1Vv"/>
                             <constraint firstItem="3pa-B3-zsG" firstAttribute="leading" secondItem="SY6-hc-ZVQ" secondAttribute="leading" id="w4Q-vF-KvJ"/>
@@ -239,7 +241,7 @@
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
-        <image name="play.square.fill" catalog="system" width="128" height="114"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>

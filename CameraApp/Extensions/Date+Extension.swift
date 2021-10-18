@@ -14,9 +14,9 @@ public extension Date {
 }
 
 public extension DateFormatter {
-    static let long: DateFormatter = {
+    static let timeOnly: DateFormatter = {
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        dateFormatter.dateFormat = "HH:mm:ss"
         return dateFormatter
     }()
 }
