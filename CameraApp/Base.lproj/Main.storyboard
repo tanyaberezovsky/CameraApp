@@ -19,8 +19,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="c6g-of-HZc">
-                                <rect key="frame" x="20" y="345" width="374" height="260"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zVO-eF-GfC">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" red="0.88604861499999998" green="0.89012104270000003" blue="0.89829826349999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="150" translatesAutoresizingMaskIntoConstraints="NO" id="c6g-of-HZc">
+                                <rect key="frame" x="20" y="320" width="374" height="310"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YeO-gt-F2m">
                                         <rect key="frame" x="147" y="0.0" width="80" height="80"/>
@@ -46,7 +50,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-wR-g8P">
-                                        <rect key="frame" x="147" y="180" width="80" height="80"/>
+                                        <rect key="frame" x="147" y="230" width="80" height="80"/>
                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="2sk-YO-XBj"/>
@@ -78,13 +82,16 @@
                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c6g-of-HZc" secondAttribute="trailing" constant="20" id="5Bz-qP-eig"/>
+                            <constraint firstItem="zVO-eF-GfC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7Re-Kb-pCG"/>
                             <constraint firstItem="c6g-of-HZc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K6G-Su-lPh"/>
+                            <constraint firstItem="zVO-eF-GfC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="R84-2G-WQr"/>
                             <constraint firstItem="c6g-of-HZc" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="r5z-Cf-eOp"/>
                             <constraint firstItem="c6g-of-HZc" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wUG-Op-d3Q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="WdH-fa-vO2"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="zVO-eF-GfC" id="8hX-HC-9v0"/>
                         <outlet property="cameraButton" destination="YeO-gt-F2m" id="Px5-Kd-vIq"/>
                         <segue destination="qqR-OS-i5a" kind="show" identifier="showGallery" id="72s-JC-kEr"/>
                     </connections>

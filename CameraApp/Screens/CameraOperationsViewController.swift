@@ -13,7 +13,8 @@ class CameraOperationsViewController: UIViewController {
     
     //MARK: IBOutlets
     @IBOutlet private var cameraButton: UIButton!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+   
     //MARK: Private variables
     private lazy var mediaSaver: MediaFileSaver = {
        return MediaFileSaver()
@@ -28,16 +29,7 @@ class CameraOperationsViewController: UIViewController {
     //MARK: - Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
-    }
-    
-    //MARK: Prepare segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueShowGallery {
-           if let viewController = segue.destination as? GalleryCollectionViewController {
-               viewController.files = MediaFilesFactory(rootDir: Constants.mediaRootDir, thumbnailDir: Constants.thumbnailsDir).create()
-           }
-       }
+        setupUI()
     }
     
     //MARK: - Actions
@@ -52,8 +44,18 @@ class CameraOperationsViewController: UIViewController {
     @IBAction func unwindToGallery(segue: UIStoryboardSegue){
     }
     
+    //MARK: Prepare segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueShowGallery {
+           if let viewController = segue.destination as? GalleryCollectionViewController {
+               
+              // viewController.files = MediaFilesFactory(rootDir: Constants.mediaRootDir, thumbnailDir: Constants.thumbnailsDir).create()
+           }
+       }
+    }
+    
     //MARK: - Private functions
-    private func setupNavBar() {
+    private func setupUI() {
         let nav = self.navigationController?.navigationBar
         nav?.barStyle = UIBarStyle.black
         nav?.tintColor = UIColor.systemBlue
@@ -81,8 +83,11 @@ class CameraOperationsViewController: UIViewController {
 
 extension CameraOperationsViewController: MediaFileUpdatable {
     func saveMediaFile(_ info: [UIImagePickerController.InfoKey : Any]) {
-
+        activityIndicator.startAnimating()
+    
              mediaSaver.saveMediaFile(info) { [weak self] result in
+                 self?.activityIndicator.stopAnimating()
+             
                 switch result {
                 case .failure(let error):
                     self?.alert(message: error.localizedDescription)

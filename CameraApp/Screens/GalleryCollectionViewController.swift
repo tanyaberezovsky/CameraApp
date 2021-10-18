@@ -13,19 +13,30 @@ private let reuseIdentifier = "GalleryCell"
 class GalleryCollectionViewController: UICollectionViewController {
     
     //MARK: Public variables
-    public var files: [MediaFileProtocol]!
+    public lazy var files: [MediaFileProtocol] = {
+      return MediaFilesFactory(rootDir: Constants.mediaRootDir, thumbnailDir: Constants.thumbnailsDir).create()
+    }()
+   
+    //MARK: IBOutlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
    
     //MARK: Private variables
     private var showPicture: String {
         return Constants.Segues.showPicture.rawValue
     }
 
+    //MARK: - Controller lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
     //MARK: - Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showPicture {
             
             guard let indexPaths = collectionView.indexPathsForSelectedItems else { return }
-                  
+            
             let destinationController = segue.destination as! PhotoViewController
             destinationController.photoFile = files[indexPaths[0].row]
             collectionView.deselectItem(at: indexPaths[0], animated: false)
@@ -55,6 +66,12 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
     
     //MARK: Private methods
+    private func setupUI() {
+//        activityIndicator.style = .large
+//        activityIndicator.color = .white
+        //activityIndicator.hidesWhenStopped = true
+    }
+    
     private func playVideo(url: URL) {
         let player = AVPlayer(url: url)
         let vcPlayer = AVPlayerViewController()

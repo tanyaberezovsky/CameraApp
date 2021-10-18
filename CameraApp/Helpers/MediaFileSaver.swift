@@ -41,6 +41,18 @@ class MediaFileSaver {
     //MARK: Public method
     public func saveMediaFile(_ info: [UIImagePickerController.InfoKey : Any],
                               completion: @escaping (Result<Void, Error>) -> Void) {
+        DispatchQueue.global().async {
+            self.saveMediaFileOnBackground(info) { result in
+                DispatchQueue.main.async {
+                  completion(result)
+                }
+            }
+        }
+
+    }
+    
+    public func saveMediaFileOnBackground(_ info: [UIImagePickerController.InfoKey : Any],
+                              completion: @escaping (Result<Void, Error>) -> Void) {
         
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
 

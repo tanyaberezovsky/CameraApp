@@ -135,10 +135,10 @@
 			isa = PBXGroup;
 			children = (
 				2B0A7011271B3C5A00075842 /* Constants.swift */,
+				2B1AF8B3271DAFA3009E2328 /* Errors.swift */,
 				2B0A700D271B3B1000075842 /* FileSaver.swift */,
 				2B0A700F271B3B4500075842 /* DirectoryManager.swift */,
 				2B0A705E271CB60C00075842 /* FileNameConverter.swift */,
-				2B1AF8B3271DAFA3009E2328 /* Errors.swift */,
 				2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */,
 			);
 			path = Helpers;

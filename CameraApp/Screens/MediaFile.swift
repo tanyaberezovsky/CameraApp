@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MediaFileProtocol {
-    var image: UIImage { get set }
+    var image: UIImage? { get set }
     var url: URL { get set }
     var fileName: String { get set }
     var imageDescription: String { get set }
@@ -16,12 +16,12 @@ protocol MediaFileProtocol {
 }
 
 struct PhotoFile: MediaFileProtocol {
-    var image: UIImage
+    var image: UIImage?
     var fileName: String
     var url: URL
     var imageDescription: String
     
-    init(image: UIImage, fileName: String, url: URL){
+    init(image: UIImage?, fileName: String, url: URL){
         self.image = image
         self.fileName = fileName
         self.url = url
@@ -34,15 +34,17 @@ struct PhotoFile: MediaFileProtocol {
 }
 
 struct VideoFile: MediaFileProtocol {
-    var image: UIImage
+    var image: UIImage?
     var fileName: String
     var url: URL
     var imageDescription: String
-    
-    init(image: UIImage, fileName: String, url: URL){
+    var urlThumbnail: URL
+   
+    init(image: UIImage?, fileName: String, url: URL, urlThumbnail: URL){
         self.image = image
         self.fileName = fileName
         self.url = url
+        self.urlThumbnail = urlThumbnail
         self.imageDescription = FileNameConverter(fileName).description()
     }
     

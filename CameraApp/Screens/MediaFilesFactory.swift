@@ -46,16 +46,19 @@ struct MediaFilesFactory {
        
         let videoFilePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
 
-        let thumbnailVideoImage = thumbnailVideoImage(fileName)
+        //let thumbnailVideoImage = thumbnailVideoImage(fileName)
+        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.png.rawValue)
+        
+        let thumbnailFilePath = thumbnailDir.appendingPathComponent(thumbnailFileName, isDirectory: false)
 
-        return VideoFile(image: thumbnailVideoImage, fileName: fileName, url: videoFilePath)
+        return VideoFile(image: nil, fileName: fileName, url: videoFilePath, urlThumbnail: thumbnailFilePath)
     }
     
     private func createPhotoFile(_ fileName: String) -> MediaFileProtocol {
         let filePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
-        let image = getImage(filePath)
+        //let image = getImage(filePath)
 
-        return PhotoFile(image: image, fileName: fileName, url: filePath)
+        return PhotoFile(image: nil, fileName: fileName, url: filePath)
     }
     
     private func thumbnailVideoImage(_ fileName: String) -> UIImage {
