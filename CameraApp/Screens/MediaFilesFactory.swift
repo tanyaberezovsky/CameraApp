@@ -22,7 +22,7 @@ struct MediaFilesFactory {
     //MARK: Public methods
     public func create() -> [MediaFileProtocol] {
         
-        let items = try! FileManager.default.contentsOfDirectory(atPath: rootDir.path).sorted()
+        let items = try! FileManager.default.contentsOfDirectory(atPath: rootDir.path).sorted { $0 > $1 }
  
         var mediaFiles = [MediaFileProtocol]()
         
