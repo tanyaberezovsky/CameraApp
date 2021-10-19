@@ -19,7 +19,6 @@ struct Constants {
     }
     
     public enum Segues: String {
-        case showGallery
         case showPicture
         case showVideo
     }

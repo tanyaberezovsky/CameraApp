@@ -12,6 +12,7 @@ protocol DirectoryManagerProtocol {
 }
 
 struct DirectoryManager {
+    
     private var rootDir: URL
     
     init(rootDir: URL = Constants.mediaRootDir) {

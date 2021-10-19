@@ -54,7 +54,8 @@ class MediaFileSaver {
 
     }
     
-    public func saveMediaFileOnBackground(_ info: [UIImagePickerController.InfoKey : Any],
+    //MARK: Private methods
+    private func saveMediaFileOnBackground(_ info: [UIImagePickerController.InfoKey : Any],
                               completion: @escaping (Result<Void, Error>) -> Void) {
         
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! CFString
@@ -76,7 +77,6 @@ class MediaFileSaver {
         }
     }
 
-    //MARK: Private methods
     private func tryToSaveImage(_ info: [UIImagePickerController.InfoKey : Any]) throws {
 
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {

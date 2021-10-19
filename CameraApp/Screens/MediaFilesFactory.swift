@@ -46,11 +46,9 @@ struct MediaFilesFactory {
        
         let videoFilePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
 
-        //let thumbnailVideoImage = thumbnailVideoImage(fileName)
         let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpeg.rawValue)
         
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(thumbnailFileName, isDirectory: false)
-       // let thumbnailImage = getImage(thumbnailFilePath)
         
         return VideoFile(image: nil, fileName: fileName, url: videoFilePath, thumbnailUrl: thumbnailFilePath)
     }
@@ -59,8 +57,6 @@ struct MediaFilesFactory {
         let filePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
 
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(fileName, isDirectory: false)
-
-        //let thumbnailImage = getImage(thumbnailFilePath)
 
         return PhotoFile(image: nil, fileName: fileName, url: filePath, thumbnailUrl: thumbnailFilePath)
     }
@@ -73,6 +69,15 @@ struct MediaFilesFactory {
         return getImage(thumbnailFilePath)
     }
     
+    private func isFileExist(url: URL) -> Bool {
+        let filePath = url.path
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: filePath) {
+            return true
+        } else {
+            return false
+        }
+    }
     
     private func getImage(_ filePath: URL) -> UIImage {
         return UIImage(contentsOfFile: filePath.path) ?? UIImage()

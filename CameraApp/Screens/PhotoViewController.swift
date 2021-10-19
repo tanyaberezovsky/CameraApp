@@ -21,6 +21,7 @@ class PhotoViewController: UIViewController {
         loadImage()
     }
     
+    //MARK: Private methods
     private func loadImage() {
         let queue = DispatchQueue.global(qos: .default)
         queue.async { [weak self] in

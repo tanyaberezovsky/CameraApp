@@ -8,7 +8,6 @@
 import UIKit
 
 protocol FileSaverProtocol {
-    //func saveImagePNG(_ image: UIImage, path: URL) throws
     func saveImageJPEG(_ image: UIImage, path: URL, compressionQuality: CGFloat) throws
     func saveVideo(_ videoURL: URL, path: URL) throws
 }
@@ -16,14 +15,7 @@ protocol FileSaverProtocol {
 struct FileSaver {}
 
 extension FileSaver: FileSaverProtocol {
-    
-//    func saveImagePNG(_ image: UIImage, path: URL ) throws {
-//        guard let pngData = image.pngData() else {
-//            return
-//        }
-//        return try saveData(pngData, path)
-//    }
-    
+        
     func saveImageJPEG(_ image: UIImage, path: URL, compressionQuality: CGFloat = 1.0) throws {
         
         guard let data = image.jpegData(compressionQuality: compressionQuality) else {

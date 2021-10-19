@@ -16,21 +16,16 @@ class GalleryCollectionViewController: UICollectionViewController {
     public lazy var files: [MediaFileProtocol] = {
       return MediaFilesFactory(rootDir: Constants.mediaRootDir, thumbnailDir: Constants.thumbnailsDir).create()
     }()
-   
-    //MARK: IBOutlets
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-   
+      
     //MARK: Private variables
+    private lazy var cache: NSCache<NSString, UIImage> = {
+        return NSCache()
+    }()
+    
     private var showPicture: String {
         return Constants.Segues.showPicture.rawValue
     }
 
-    //MARK: - Controller lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
-    
     //MARK: Action
     @IBAction func unwindToGallery(segue: UIStoryboardSegue){
     }
@@ -69,13 +64,7 @@ class GalleryCollectionViewController: UICollectionViewController {
         }
     }
     
-    //MARK: Private methods
-    private func setupUI() {
-//        activityIndicator.style = .large
-//        activityIndicator.color = .white
-        //activityIndicator.hidesWhenStopped = true
-    }
-    
+    //MARK: - Private methods
     private func playVideo(url: URL) {
         let player = AVPlayer(url: url)
         let vcPlayer = AVPlayerViewController()

@@ -7,6 +7,8 @@
 
 import UIKit
 
+var globalImagesCache: NSCache<NSString, UIImage> = NSCache()
+
 class GalleryCollectionViewCell: UICollectionViewCell {
     
     //MARK: IBOutlets
@@ -15,6 +17,8 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var playImageView: UIImageView!
     
     //MARK: Private variables
+    var imageLoader: ImageCacheLoader!
+    
     private var mediaObject: MediaFileProtocol! {
         didSet {
             nameLabel.text = mediaObject.imageDescription
@@ -22,18 +26,10 @@ class GalleryCollectionViewCell: UICollectionViewCell {
             
             imageView.image = UIImage()
             
-            let queue = DispatchQueue.global(qos: .default)
-            queue.async { [weak self] in
-                guard let strongSelf = self else {
-                    return
-                }
-                let image = UIImage(contentsOfFile: strongSelf.mediaObject.thumbnailUrl.path) ?? UIImage()
-                DispatchQueue.main.async { [weak self] in
-                    self?.imageView.image = image
-                }
-                
+            imageLoader = ImageCacheLoader(imagePath: mediaObject.thumbnailUrl.path, cache: globalImagesCache)
+            imageLoader.obtainImageWithPath(imagePath: mediaObject.thumbnailUrl.path) { [weak self] image in
+                self?.imageView.image = image
             }
-           
         }
     }
 

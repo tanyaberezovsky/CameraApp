@@ -23,6 +23,7 @@
 		2B1AF876271D95F2009E2328 /* ImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AF875271D95F2009E2328 /* ImagePickerControllerDelegate.swift */; };
 		2B1AF8B4271DAFA3009E2328 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AF8B3271DAFA3009E2328 /* Errors.swift */; };
 		2B1AF8B6271DB4DE009E2328 /* MediaFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */; };
+		2B1AF8ED271F1F03009E2328 /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AF8EC271F1F03009E2328 /* ImageCacheLoader.swift */; };
 		2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD312719EBC400515DC9 /* AppDelegate.swift */; };
 		2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */; };
 		2B5BAD362719EBC400515DC9 /* CameraOperationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD352719EBC400515DC9 /* CameraOperationsViewController.swift */; };
@@ -68,6 +69,7 @@
 		2B1AF875271D95F2009E2328 /* ImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerControllerDelegate.swift; sourceTree = "<group>"; };
 		2B1AF8B3271DAFA3009E2328 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFileSaver.swift; sourceTree = "<group>"; };
+		2B1AF8EC271F1F03009E2328 /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
 		2B5BAD2E2719EBC400515DC9 /* CameraApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5BAD312719EBC400515DC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B5BAD332719EBC400515DC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				2B0A700F271B3B4500075842 /* DirectoryManager.swift */,
 				2B0A705E271CB60C00075842 /* FileNameConverter.swift */,
 				2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */,
+				2B1AF8EC271F1F03009E2328 /* ImageCacheLoader.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				2B1AF876271D95F2009E2328 /* ImagePickerControllerDelegate.swift in Sources */,
 				2B5BAD322719EBC400515DC9 /* AppDelegate.swift in Sources */,
 				2B0A705F271CB60C00075842 /* FileNameConverter.swift in Sources */,
+				2B1AF8ED271F1F03009E2328 /* ImageCacheLoader.swift in Sources */,
 				2B1AF8B4271DAFA3009E2328 /* Errors.swift in Sources */,
 				2B0A700C271B3AF200075842 /* Date+Extension.swift in Sources */,
 				2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */,
