@@ -15,7 +15,7 @@ struct Constants {
     
     public enum FileExtention: String {
         case mp4
-        case png
+        case jpeg
     }
     
     public enum Segues: String {

@@ -10,21 +10,25 @@ import UIKit
 protocol MediaFileProtocol {
     var image: UIImage? { get set }
     var url: URL { get set }
+    var thumbnailUrl: URL { get set }
     var fileName: String { get set }
     var imageDescription: String { get set }
     func isVideo() -> Bool
 }
 
 struct PhotoFile: MediaFileProtocol {
+    
     var image: UIImage?
     var fileName: String
     var url: URL
+    var thumbnailUrl: URL
     var imageDescription: String
     
-    init(image: UIImage?, fileName: String, url: URL){
+    init(image: UIImage?, fileName: String, url: URL, thumbnailUrl: URL){
         self.image = image
         self.fileName = fileName
         self.url = url
+        self.thumbnailUrl = thumbnailUrl
         self.imageDescription = FileNameConverter(fileName).description()
     }
 
@@ -37,14 +41,14 @@ struct VideoFile: MediaFileProtocol {
     var image: UIImage?
     var fileName: String
     var url: URL
+    var thumbnailUrl: URL
     var imageDescription: String
-    var urlThumbnail: URL
-   
-    init(image: UIImage?, fileName: String, url: URL, urlThumbnail: URL){
+    
+    init(image: UIImage?, fileName: String, url: URL, thumbnailUrl: URL){
         self.image = image
         self.fileName = fileName
         self.url = url
-        self.urlThumbnail = urlThumbnail
+        self.thumbnailUrl = thumbnailUrl
         self.imageDescription = FileNameConverter(fileName).description()
     }
     

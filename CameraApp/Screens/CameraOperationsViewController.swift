@@ -22,10 +22,6 @@ class CameraOperationsViewController: UIViewController {
     
     private var imagePickerDelegate: ImagePickerControllerDelegate?
 
-    private var segueShowGallery: String {
-        return Constants.Segues.showGallery.rawValue
-    }
-
     //MARK: - Controller lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,24 +32,7 @@ class CameraOperationsViewController: UIViewController {
     @IBAction func openCamera() {
         tryOpenCamera()
     }
-    
-    @IBAction func openGallery() {
-        performSegue(withIdentifier: segueShowGallery, sender: self)
-    }
-    
-    @IBAction func unwindToGallery(segue: UIStoryboardSegue){
-    }
-    
-    //MARK: Prepare segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueShowGallery {
-           if let viewController = segue.destination as? GalleryCollectionViewController {
-               
-              // viewController.files = MediaFilesFactory(rootDir: Constants.mediaRootDir, thumbnailDir: Constants.thumbnailsDir).create()
-           }
-       }
-    }
-    
+           
     //MARK: - Private functions
     private func setupUI() {
         let nav = self.navigationController?.navigationBar

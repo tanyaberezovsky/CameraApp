@@ -8,7 +8,7 @@ import AVKit
 
 extension AVAsset {
 
-    func generateThumbnail(completion: @escaping (UIImage?) -> Void) {
+    func generateThumbnailFromVideo(completion: @escaping (UIImage?) -> Void) {
         DispatchQueue.global().async {
             let imageGenerator = AVAssetImageGenerator(asset: self)
             let time = CMTime(seconds: 0.0, preferredTimescale: 600)

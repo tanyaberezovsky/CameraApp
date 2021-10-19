@@ -18,6 +18,21 @@ class PhotoViewController: UIViewController {
     //MARK: Controler Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        imageView.image = photoFile.image
+        loadImage()
+    }
+    
+    private func loadImage() {
+        let queue = DispatchQueue.global(qos: .default)
+        queue.async { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            let image = UIImage(contentsOfFile: strongSelf.photoFile.url.path) ?? UIImage()
+            DispatchQueue.main.async { [weak self] in
+                self?.imageView.image = image
+            }
+            
+        }
     }
 }

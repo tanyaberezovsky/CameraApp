@@ -16,14 +16,17 @@ class MediaFileSaver {
     private var mediaDir: DirectoryManagerProtocol
     private var thumbnailDir: DirectoryManagerProtocol
 
-    private var imageFilePath: URL {
-        return mediaDir.filePath(timestampStr, Constants.FileExtention.png.rawValue)
+    private var imageFilePath: (image: URL, thumbnail: URL) {
+        let fileName = timestampStr
+        let image = mediaDir.filePath(fileName, Constants.FileExtention.jpeg.rawValue)
+        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpeg.rawValue)
+        return (image, thumbnail)
     }
-
+    
     private var videoFilePath: (video: URL, thumbnail: URL) {
         let fileName = timestampStr
         let video = mediaDir.filePath(fileName, Constants.FileExtention.mp4.rawValue)
-        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.png.rawValue)
+        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpeg.rawValue)
         return (video, thumbnail)
     }
 
@@ -79,8 +82,19 @@ class MediaFileSaver {
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             throw CustomErrors.fileIsEmpty
         }
-
-        guard let _ = try? fileSaver.saveImagePNG(image.fixOrientation(), path: imageFilePath) else {
+        
+        let imagefixed = image.fixOrientation()
+        let imagePaths = imageFilePath
+        
+        guard let _ = try? fileSaver.saveImageJPEG(imagefixed, path: imagePaths.image, compressionQuality: 1.0) else {
+            throw CustomErrors.failedToSavePhoto
+        }
+      
+        guard let thumbnail = imagefixed.getThumbnail() else {
+            throw CustomErrors.failedToSaveThumbnail
+        }
+        
+        guard let _ = try? fileSaver.saveImageJPEG(thumbnail, path: imagePaths.thumbnail, compressionQuality: 0.6) else {
             throw CustomErrors.failedToSavePhoto
         }
     }
@@ -109,7 +123,11 @@ class MediaFileSaver {
         createThumbnailNew(videoURL) { [weak self] result in
             switch result {
             case .success(let image):
-                guard let _ = try? self?.fileSaver.saveImagePNG(image, path: thumbnailURL) else {
+                guard let thumbnail = image.getThumbnail() else {
+                    completion(.failure(CustomErrors.failedToSaveThumbnail))
+                    return
+                }
+                guard let _ = try? self?.fileSaver.saveImageJPEG(thumbnail, path: thumbnailURL, compressionQuality: 0.6) else {
                     completion(.failure(CustomErrors.failedToSaveThumbnail))
                     return
                 }
@@ -121,7 +139,7 @@ class MediaFileSaver {
     }
 
     private func createThumbnailNew(_ videoURL: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        AVAsset(url: videoURL).generateThumbnail { image in
+        AVAsset(url: videoURL).generateThumbnailFromVideo { image in
             DispatchQueue.main.async {
                 if let image = image {
                     completion(.success(image))
@@ -131,6 +149,4 @@ class MediaFileSaver {
             }
         }
     }
-
-
-}
+ }

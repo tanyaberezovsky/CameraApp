@@ -31,6 +31,10 @@ class GalleryCollectionViewController: UICollectionViewController {
         setupUI()
     }
     
+    //MARK: Action
+    @IBAction func unwindToGallery(segue: UIStoryboardSegue){
+    }
+    
     //MARK: - Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showPicture {

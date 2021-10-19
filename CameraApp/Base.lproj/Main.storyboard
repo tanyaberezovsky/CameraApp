@@ -69,7 +69,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="openGallery" destination="BYZ-38-t0r" eventType="touchUpInside" id="TtG-m4-ePb"/>
+                                            <segue destination="qqR-OS-i5a" kind="show" id="2hJ-rf-2f8"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -93,7 +93,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="zVO-eF-GfC" id="8hX-HC-9v0"/>
                         <outlet property="cameraButton" destination="YeO-gt-F2m" id="Px5-Kd-vIq"/>
-                        <segue destination="qqR-OS-i5a" kind="show" identifier="showGallery" id="72s-JC-kEr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -200,7 +199,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button" image="xmark" catalog="system"/>
                                 <connections>
-                                    <segue destination="VVT-dt-nrG" kind="unwind" unwindAction="unwindToGalleryWithSegue:" id="6cM-Ac-arL"/>
+                                    <segue destination="VVT-dt-nrG" kind="unwind" unwindAction="unwindToGalleryWithSegue:" id="ehl-cI-UsS"/>
                                 </connections>
                             </button>
                         </subviews>

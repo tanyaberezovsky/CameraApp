@@ -47,22 +47,26 @@ struct MediaFilesFactory {
         let videoFilePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
 
         //let thumbnailVideoImage = thumbnailVideoImage(fileName)
-        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.png.rawValue)
+        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpeg.rawValue)
         
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(thumbnailFileName, isDirectory: false)
-
-        return VideoFile(image: nil, fileName: fileName, url: videoFilePath, urlThumbnail: thumbnailFilePath)
+       // let thumbnailImage = getImage(thumbnailFilePath)
+        
+        return VideoFile(image: nil, fileName: fileName, url: videoFilePath, thumbnailUrl: thumbnailFilePath)
     }
     
     private func createPhotoFile(_ fileName: String) -> MediaFileProtocol {
         let filePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
-        //let image = getImage(filePath)
 
-        return PhotoFile(image: nil, fileName: fileName, url: filePath)
+        let thumbnailFilePath = thumbnailDir.appendingPathComponent(fileName, isDirectory: false)
+
+        //let thumbnailImage = getImage(thumbnailFilePath)
+
+        return PhotoFile(image: nil, fileName: fileName, url: filePath, thumbnailUrl: thumbnailFilePath)
     }
     
     private func thumbnailVideoImage(_ fileName: String) -> UIImage {
-        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.png.rawValue)
+        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpeg.rawValue)
         
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(thumbnailFileName, isDirectory: false)
        
