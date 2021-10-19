@@ -27,14 +27,16 @@ struct MediaFilesFactory {
         var mediaFiles = [MediaFileProtocol]()
         
         for item in items {
-            mediaFiles.append(createMediaFile(item))
+            if let mediaFile = createMediaFile(item) {
+                mediaFiles.append(mediaFile)
+            }
         }
         
         return mediaFiles
     }
     
     //MARK: Private methods
-    private func createMediaFile(_ fileName: String) -> MediaFileProtocol {
+    private func createMediaFile(_ fileName: String) -> MediaFileProtocol? {
         if isVideo(fileName) {
             return createVideoFile(fileName)
         } else {
@@ -42,22 +44,27 @@ struct MediaFilesFactory {
         }
     }
     
-    private func createVideoFile(_ fileName: String) -> MediaFileProtocol {
-       
+    private func createVideoFile(_ fileName: String) -> MediaFileProtocol? {
         let videoFilePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
 
         let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpeg.rawValue)
         
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(thumbnailFileName, isDirectory: false)
         
+        if isFileExist(url: thumbnailFilePath) == false {
+            return nil
+        }
         return VideoFile(image: nil, fileName: fileName, url: videoFilePath, thumbnailUrl: thumbnailFilePath)
     }
     
-    private func createPhotoFile(_ fileName: String) -> MediaFileProtocol {
+    private func createPhotoFile(_ fileName: String) -> MediaFileProtocol? {
         let filePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
 
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(fileName, isDirectory: false)
-
+        
+        if isFileExist(url: thumbnailFilePath) == false {
+            return nil
+        }
         return PhotoFile(image: nil, fileName: fileName, url: filePath, thumbnailUrl: thumbnailFilePath)
     }
     
