@@ -20,6 +20,8 @@
 		2B0A705B271C7DA800075842 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705A271C7DA800075842 /* UIImage+Extensions.swift */; };
 		2B0A705F271CB60C00075842 /* FileNameConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A705E271CB60C00075842 /* FileNameConverter.swift */; };
 		2B0A7062271CBCE700075842 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0A7061271CBCE700075842 /* PhotoViewController.swift */; };
+		2B195CAB271F626F00409698 /* PhotoFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B195CAA271F626F00409698 /* PhotoFileSaver.swift */; };
+		2B195CAD271F62AB00409698 /* VideoFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B195CAC271F62AB00409698 /* VideoFileSaver.swift */; };
 		2B1AF876271D95F2009E2328 /* ImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AF875271D95F2009E2328 /* ImagePickerControllerDelegate.swift */; };
 		2B1AF8B4271DAFA3009E2328 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AF8B3271DAFA3009E2328 /* Errors.swift */; };
 		2B1AF8B6271DB4DE009E2328 /* MediaFileSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */; };
@@ -36,7 +38,6 @@
 		2B5BAD392719EBC400515DC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5BAD372719EBC400515DC9 /* Main.storyboard */; };
 		2B5BAD3B2719EBC500515DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B5BAD3A2719EBC500515DC9 /* Assets.xcassets */; };
 		2B5BAD3E2719EBC500515DC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5BAD3C2719EBC500515DC9 /* LaunchScreen.storyboard */; };
-		2B5BAD492719EBC500515DC9 /* CameraAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BAD482719EBC500515DC9 /* CameraAppTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		2B0A705A271C7DA800075842 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		2B0A705E271CB60C00075842 /* FileNameConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNameConverter.swift; sourceTree = "<group>"; };
 		2B0A7061271CBCE700075842 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		2B195CAA271F626F00409698 /* PhotoFileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFileSaver.swift; sourceTree = "<group>"; };
+		2B195CAC271F62AB00409698 /* VideoFileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFileSaver.swift; sourceTree = "<group>"; };
 		2B1AF875271D95F2009E2328 /* ImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerControllerDelegate.swift; sourceTree = "<group>"; };
 		2B1AF8B3271DAFA3009E2328 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaFileSaver.swift; sourceTree = "<group>"; };
@@ -82,7 +85,6 @@
 		2B5BAD3D2719EBC500515DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B5BAD3F2719EBC500515DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B5BAD442719EBC500515DC9 /* CameraAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CameraAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B5BAD482719EBC500515DC9 /* CameraAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAppTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +136,10 @@
 				2B0A700D271B3B1000075842 /* FileSaver.swift */,
 				2B0A700F271B3B4500075842 /* DirectoryManager.swift */,
 				2B0A705E271CB60C00075842 /* FileNameConverter.swift */,
-				2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */,
 				2B1AF8EC271F1F03009E2328 /* ImageCacheLoader.swift */,
+				2B1AF8B5271DB4DE009E2328 /* MediaFileSaver.swift */,
+				2B195CAA271F626F00409698 /* PhotoFileSaver.swift */,
+				2B195CAC271F62AB00409698 /* VideoFileSaver.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -238,10 +242,9 @@
 		2B5BAD472719EBC500515DC9 /* CameraAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				2B1AF8FA271F3905009E2328 /* Helpers */,
 				2B1AF8F1271F3106009E2328 /* Mocks */,
 				2B1AF8EE271F2848009E2328 /* Extensions */,
-				2B5BAD482719EBC500515DC9 /* CameraAppTests.swift */,
+				2B1AF8FA271F3905009E2328 /* Helpers */,
 			);
 			path = CameraAppTests;
 			sourceTree = "<group>";
@@ -362,8 +365,10 @@
 				2B5BAD342719EBC400515DC9 /* SceneDelegate.swift in Sources */,
 				2B0A7018271B59E000075842 /* GalleryCollectionViewController.swift in Sources */,
 				2B0A700E271B3B1000075842 /* FileSaver.swift in Sources */,
+				2B195CAD271F62AB00409698 /* VideoFileSaver.swift in Sources */,
 				2B0A7062271CBCE700075842 /* PhotoViewController.swift in Sources */,
 				2B0A7010271B3B4500075842 /* DirectoryManager.swift in Sources */,
+				2B195CAB271F626F00409698 /* PhotoFileSaver.swift in Sources */,
 				2B0A7022271B6E0500075842 /* MediaFilesFactory.swift in Sources */,
 				2B0A7016271B59BD00075842 /* GalleryCollectionViewCell.swift in Sources */,
 				2B0A705B271C7DA800075842 /* UIImage+Extensions.swift in Sources */,
@@ -378,7 +383,6 @@
 			files = (
 				2B1AF8F7271F3317009E2328 /* UIImageExtentionsTests.swift in Sources */,
 				2B1AF8F3271F313F009E2328 /* MockUIImage.swift in Sources */,
-				2B5BAD492719EBC500515DC9 /* CameraAppTests.swift in Sources */,
 				2B1AF8F0271F2928009E2328 /* DateExtensionsTests.swift in Sources */,
 				2B1AF8FC271F3939009E2328 /* FileNameConverterTests.swift in Sources */,
 			);
