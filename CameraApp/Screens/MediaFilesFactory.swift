@@ -27,6 +27,7 @@ struct MediaFilesFactory {
         var mediaFiles = [MediaFileProtocol]()
         
         for item in items {
+            print(item)
             if let mediaFile = createMediaFile(item) {
                 mediaFiles.append(mediaFile)
             }
@@ -47,7 +48,7 @@ struct MediaFilesFactory {
     private func createVideoFile(_ fileName: String) -> MediaFileProtocol? {
         let videoFilePath = rootDir.appendingPathComponent(fileName, isDirectory: false)
 
-        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpeg.rawValue)
+        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpg.rawValue)
         
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(thumbnailFileName, isDirectory: false)
         
@@ -69,7 +70,7 @@ struct MediaFilesFactory {
     }
     
     private func thumbnailVideoImage(_ fileName: String) -> UIImage {
-        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpeg.rawValue)
+        let thumbnailFileName = fileName.replacingOccurrences(of: Constants.FileExtention.mp4.rawValue, with: Constants.FileExtention.jpg.rawValue)
         
         let thumbnailFilePath = thumbnailDir.appendingPathComponent(thumbnailFileName, isDirectory: false)
        

@@ -18,15 +18,15 @@ class MediaFileSaver {
 
     private var imageFilePath: (image: URL, thumbnail: URL) {
         let fileName = timestampStr
-        let image = mediaDir.filePath(fileName, Constants.FileExtention.jpeg.rawValue)
-        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpeg.rawValue)
+        let image = mediaDir.filePath(fileName, Constants.FileExtention.jpg.rawValue)
+        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpg.rawValue)
         return (image, thumbnail)
     }
     
     private var videoFilePath: (video: URL, thumbnail: URL) {
         let fileName = timestampStr
         let video = mediaDir.filePath(fileName, Constants.FileExtention.mp4.rawValue)
-        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpeg.rawValue)
+        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpg.rawValue)
         return (video, thumbnail)
     }
 
@@ -113,17 +113,19 @@ class MediaFileSaver {
             return
         }
 
-        tryToSaveThumbnail(videoURL, videoPaths.thumbnail) { result in
+        tryToSaveThumbnailFromVideo(videoURL, videoPaths.thumbnail) { result in
             completion(result)
         }
     }
 
-    private func tryToSaveThumbnail(_ videoURL: URL, _ thumbnailURL: URL,
+    private func tryToSaveThumbnailFromVideo(_ videoURL: URL, _ thumbnailURL: URL,
                                 completion: @escaping (Result<Void, Error>) -> Void) {
-        createThumbnailNew(videoURL) { [weak self] result in
+        createThumbnailFromVideo(videoURL) { [weak self] result in
             switch result {
             case .success(let image):
-                guard let thumbnail = image.getThumbnail() else {
+                let imagefixed = image.fixOrientation()
+               
+                guard let thumbnail = imagefixed.getThumbnail() else {
                     completion(.failure(CustomErrors.failedToSaveThumbnail))
                     return
                 }
@@ -138,7 +140,7 @@ class MediaFileSaver {
         }
     }
 
-    private func createThumbnailNew(_ videoURL: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    private func createThumbnailFromVideo(_ videoURL: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
         AVAsset(url: videoURL).generateThumbnailFromVideo { image in
             DispatchQueue.main.async {
                 if let image = image {

@@ -10,7 +10,7 @@ import Foundation
 public extension Date {
     
     func toString(formatter: DateFormatter) -> String {
-            return formatter.string(from: self)
+         return formatter.string(from: self)
     }
 }
 

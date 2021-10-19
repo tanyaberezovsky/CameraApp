@@ -1,5 +1,5 @@
 //
-//  Date+ExtensionTests.swift
+//  FileNameConverterTests.swift
 //  CameraAppTests
 //
 //  Created by Tanya Berezovsky on 19/10/2021.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class Date_ExtensionTests: XCTestCase {
+class FileNameConverterTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
