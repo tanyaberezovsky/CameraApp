@@ -86,5 +86,4 @@ extension UIImage {
         
         return img
     }
-    
 }

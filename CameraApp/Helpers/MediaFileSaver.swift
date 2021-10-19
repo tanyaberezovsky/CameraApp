@@ -44,7 +44,9 @@ class MediaFileSaver {
     //MARK: Public method
     public func saveMediaFile(_ info: [UIImagePickerController.InfoKey : Any],
                               completion: @escaping (Result<Void, Error>) -> Void) {
+        
         DispatchQueue.global().async {
+        
             self.saveMediaFileOnBackground(info) { result in
                 DispatchQueue.main.async {
                   completion(result)
@@ -123,12 +125,12 @@ class MediaFileSaver {
         createThumbnailFromVideo(videoURL) { [weak self] result in
             switch result {
             case .success(let image):
-                let imagefixed = image.fixOrientation()
-               
-                guard let thumbnail = imagefixed.getThumbnail() else {
+             
+                guard let thumbnail = image.getThumbnail() else {
                     completion(.failure(CustomErrors.failedToSaveThumbnail))
                     return
                 }
+         
                 guard let _ = try? self?.fileSaver.saveImageJPEG(thumbnail, path: thumbnailURL, compressionQuality: 0.6) else {
                     completion(.failure(CustomErrors.failedToSaveThumbnail))
                     return
@@ -141,14 +143,22 @@ class MediaFileSaver {
     }
 
     private func createThumbnailFromVideo(_ videoURL: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
-        AVAsset(url: videoURL).generateThumbnailFromVideo { image in
-            DispatchQueue.main.async {
-                if let image = image {
-                    completion(.success(image))
-                } else {
-                    completion(.failure(CustomErrors.failedToSaveThumbnail))
-                }
+        
+        let asset = AVAsset(url: videoURL)
+        
+        let assetImgGenerate : AVAssetImageGenerator = AVAssetImageGenerator(asset: asset)
+        assetImgGenerate.appliesPreferredTrackTransform = true
+        
+        assetImgGenerate.generateCGImagesAsynchronously(forTimes: [CMTime(value: 1, timescale: 2) as NSValue]) { _, cgimage, _, _, _ in
+            
+            if let cgimage = cgimage {
+                let image =  UIImage(cgImage: cgimage)
+            
+                completion(.success(image))
+            } else {
+                
+                completion(.failure(CustomErrors.failedToSaveThumbnail))
             }
-        }
+          }
     }
  }

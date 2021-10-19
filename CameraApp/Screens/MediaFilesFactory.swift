@@ -27,7 +27,6 @@ struct MediaFilesFactory {
         var mediaFiles = [MediaFileProtocol]()
         
         for item in items {
-            print(item)
             if let mediaFile = createMediaFile(item) {
                 mediaFiles.append(mediaFile)
             }
