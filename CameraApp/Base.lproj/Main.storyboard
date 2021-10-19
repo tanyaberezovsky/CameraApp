@@ -7,7 +7,6 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -107,7 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="secondaryLabelColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aL0-Fc-dDg">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aL0-Fc-dDg">
                             <size key="itemSize" width="100" height="150"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -117,47 +116,40 @@
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryCell" id="meU-d0-o5t" customClass="GalleryCollectionViewCell" customModule="CameraApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P7I-DW-ox2">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rpx-ec-5Kh">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="115"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="WDI-z1-F5e"/>
-                                                <constraint firstAttribute="height" constant="115" id="jn3-TJ-hC9"/>
-                                            </constraints>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rpx-ec-5Kh">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="132"/>
                                         </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="forceLeftToRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-QX-1aN">
-                                            <rect key="frame" x="30" y="39" width="40" height="36.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Fbh-QX-1aN">
+                                            <rect key="frame" x="30" y="47.5" width="40" height="36.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="Mnr-ys-hAz"/>
                                                 <constraint firstAttribute="height" constant="40" id="y7W-ph-Fue"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20:12" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="6zb-U7-EwV">
-                                            <rect key="frame" x="0.0" y="115" width="100" height="35"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="35" id="Qbq-Mo-pnr"/>
-                                            </constraints>
+                                            <rect key="frame" x="0.0" y="132" width="100" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" systemColor="systemBlueColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Fbh-QX-1aN" firstAttribute="centerX" secondItem="Rpx-ec-5Kh" secondAttribute="centerX" id="B6P-3L-kLR"/>
-                                        <constraint firstAttribute="trailing" secondItem="6zb-U7-EwV" secondAttribute="trailing" id="Bnq-W5-dWY"/>
-                                        <constraint firstItem="Rpx-ec-5Kh" firstAttribute="leading" secondItem="P7I-DW-ox2" secondAttribute="leading" id="Bta-mc-MvD"/>
-                                        <constraint firstAttribute="trailing" secondItem="Rpx-ec-5Kh" secondAttribute="trailing" id="Ome-ag-TPa"/>
-                                        <constraint firstItem="Fbh-QX-1aN" firstAttribute="centerY" secondItem="Rpx-ec-5Kh" secondAttribute="centerY" id="RRS-yX-ybF"/>
-                                        <constraint firstItem="6zb-U7-EwV" firstAttribute="top" secondItem="Rpx-ec-5Kh" secondAttribute="bottom" id="Rmn-bR-qJg"/>
-                                        <constraint firstItem="Rpx-ec-5Kh" firstAttribute="top" secondItem="P7I-DW-ox2" secondAttribute="top" id="p62-KA-QaU"/>
-                                        <constraint firstItem="6zb-U7-EwV" firstAttribute="leading" secondItem="P7I-DW-ox2" secondAttribute="leading" id="rsI-oD-GA0"/>
-                                        <constraint firstItem="6zb-U7-EwV" firstAttribute="top" secondItem="Rpx-ec-5Kh" secondAttribute="bottom" id="rxv-cE-2xG"/>
-                                        <constraint firstAttribute="bottom" secondItem="6zb-U7-EwV" secondAttribute="bottom" id="zpZ-jR-6eJ"/>
-                                    </constraints>
-                                </collectionViewCellContentView>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="Fbh-QX-1aN" firstAttribute="centerX" secondItem="Rpx-ec-5Kh" secondAttribute="centerX" id="B6P-3L-kLR"/>
+                                    <constraint firstAttribute="trailing" secondItem="6zb-U7-EwV" secondAttribute="trailing" id="Bnq-W5-dWY"/>
+                                    <constraint firstItem="Rpx-ec-5Kh" firstAttribute="leading" secondItem="meU-d0-o5t" secondAttribute="leading" id="Bta-mc-MvD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rpx-ec-5Kh" secondAttribute="trailing" id="Ome-ag-TPa"/>
+                                    <constraint firstItem="Fbh-QX-1aN" firstAttribute="centerY" secondItem="Rpx-ec-5Kh" secondAttribute="centerY" id="RRS-yX-ybF"/>
+                                    <constraint firstItem="Rpx-ec-5Kh" firstAttribute="top" secondItem="meU-d0-o5t" secondAttribute="top" id="p62-KA-QaU"/>
+                                    <constraint firstItem="6zb-U7-EwV" firstAttribute="leading" secondItem="meU-d0-o5t" secondAttribute="leading" id="rsI-oD-GA0"/>
+                                    <constraint firstItem="6zb-U7-EwV" firstAttribute="top" secondItem="Rpx-ec-5Kh" secondAttribute="bottom" id="rxv-cE-2xG"/>
+                                    <constraint firstAttribute="bottom" secondItem="6zb-U7-EwV" secondAttribute="bottom" id="zpZ-jR-6eJ"/>
+                                </constraints>
+                                <size key="customSize" width="100" height="150"/>
                                 <connections>
                                     <outlet property="imageView" destination="Rpx-ec-5Kh" id="SPj-Dp-iXU"/>
                                     <outlet property="nameLabel" destination="6zb-U7-EwV" id="HO8-JB-rKa"/>
@@ -177,7 +169,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vqt-A0-GGI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="144"/>
+            <point key="canvasLocation" x="1737.68115942029" y="143.97321428571428"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="49P-f5-v8f">
