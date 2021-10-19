@@ -414,9 +414,9 @@
             filePath = "CameraApp/Helpers/MediaFileSaver.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "createThumbnailFromVideo(_:completion:)"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
+            landmarkName = "createRawThumbnailFromVideo(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -430,9 +430,9 @@
             filePath = "CameraApp/Helpers/MediaFileSaver.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "createThumbnailFromVideo(_:completion:)"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "createRawThumbnailFromVideo(_:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

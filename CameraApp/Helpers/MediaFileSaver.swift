@@ -115,23 +115,11 @@ class MediaFileSaver {
             return
         }
 
-        tryToSaveThumbnailFromVideo(videoURL, videoPaths.thumbnail) { result in
-            completion(result)
-        }
-    }
-
-    private func tryToSaveThumbnailFromVideo(_ videoURL: URL, _ thumbnailURL: URL,
-                                completion: @escaping (Result<Void, Error>) -> Void) {
-        createThumbnailFromVideo(videoURL) { [weak self] result in
+        tryToCreateThumbnailFromVideo(videoURL) { [weak self] result in
             switch result {
-            case .success(let image):
+            case .success(let thumbnail):
              
-                guard let thumbnail = image.getThumbnail() else {
-                    completion(.failure(CustomErrors.failedToSaveThumbnail))
-                    return
-                }
-         
-                guard let _ = try? self?.fileSaver.saveImageJPEG(thumbnail, path: thumbnailURL, compressionQuality: 0.6) else {
+                guard let _ = try? self?.fileSaver.saveImageJPEG(thumbnail, path: videoPaths.thumbnail, compressionQuality: 0.6) else {
                     completion(.failure(CustomErrors.failedToSaveThumbnail))
                     return
                 }
@@ -141,8 +129,30 @@ class MediaFileSaver {
             }
         }
     }
+    
 
-    private func createThumbnailFromVideo(_ videoURL: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    private func tryToCreateThumbnailFromVideo(_ videoURL: URL,
+                                completion: @escaping (Result<UIImage, Error>) -> Void) {
+        
+        createRawThumbnailFromVideo(videoURL) { result in
+            switch result {
+                
+            case .success(let image):
+             
+                guard let thumbnail = image.getThumbnail() else {
+                    completion(.failure(CustomErrors.failedToSaveThumbnail))
+                    return
+                }
+         
+                completion(.success(thumbnail))
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    private func createRawThumbnailFromVideo(_ videoURL: URL, completion: @escaping (Result<UIImage, Error>) -> Void) {
         
         let asset = AVAsset(url: videoURL)
         
