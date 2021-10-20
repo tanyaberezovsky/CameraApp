@@ -54,7 +54,7 @@ struct MediaFilesFactory {
         if isFileExist(url: thumbnailFilePath) == false {
             return nil
         }
-        return VideoFile(image: nil, fileName: fileName, url: videoFilePath, thumbnailUrl: thumbnailFilePath)
+        return VideoFile(fileName: fileName, url: videoFilePath, thumbnailUrl: thumbnailFilePath)
     }
     
     private func createPhotoFile(_ fileName: String) -> MediaFileProtocol? {
@@ -65,7 +65,7 @@ struct MediaFilesFactory {
         if isFileExist(url: thumbnailFilePath) == false {
             return nil
         }
-        return PhotoFile(image: nil, fileName: fileName, url: filePath, thumbnailUrl: thumbnailFilePath)
+        return PhotoFile(fileName: fileName, url: filePath, thumbnailUrl: thumbnailFilePath)
     }
     
     private func thumbnailVideoImage(_ fileName: String) -> UIImage {

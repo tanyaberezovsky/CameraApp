@@ -16,8 +16,8 @@ class PhotoFileSaver {
     
     private var imageFilePaths: (image: URL, thumbnail: URL) {
         let fileName = timestampStr
-        let image = mediaDir.filePath(fileName, Constants.FileExtention.jpg.rawValue)
-        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpg.rawValue)
+        let image = mediaDir.makeFilePath(fileName, Constants.FileExtention.jpg.rawValue)
+        let thumbnail = thumbnailDir.makeFilePath(fileName, Constants.FileExtention.jpg.rawValue)
         return (image, thumbnail)
     }
     

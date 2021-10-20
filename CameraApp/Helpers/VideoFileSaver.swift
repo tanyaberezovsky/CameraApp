@@ -17,8 +17,8 @@ class VideoFileSaver {
     
     private var videoFilePath: (video: URL, thumbnail: URL) {
         let fileName = timestampStr
-        let video = mediaDir.filePath(fileName, Constants.FileExtention.mp4.rawValue)
-        let thumbnail = thumbnailDir.filePath(fileName, Constants.FileExtention.jpg.rawValue)
+        let video = mediaDir.makeFilePath(fileName, Constants.FileExtention.mp4.rawValue)
+        let thumbnail = thumbnailDir.makeFilePath(fileName, Constants.FileExtention.jpg.rawValue)
         return (video, thumbnail)
     }
 

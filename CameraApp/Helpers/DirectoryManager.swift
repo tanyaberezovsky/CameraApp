@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DirectoryManagerProtocol {
-    func filePath(_ filename: String, _ fileExtension: String) -> URL
+    func makeFilePath(_ filename: String, _ fileExtension: String) -> URL
 }
 
 struct DirectoryManager {
@@ -33,7 +33,7 @@ struct DirectoryManager {
 
 extension DirectoryManager: DirectoryManagerProtocol {
     
-    func filePath(_ filename: String, _ fileExtension: String) -> URL {
+    func makeFilePath(_ filename: String, _ fileExtension: String) -> URL {
         let fileFullName = "\(filename).\(fileExtension)"
         return rootDir.appendingPathComponent(fileFullName)
     }
