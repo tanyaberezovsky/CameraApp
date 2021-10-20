@@ -26,6 +26,7 @@ class ImageCacheLoaderTests: XCTestCase {
     
     func testImageCacheLoaderAllocated() {
         XCTAssertNotNil(imageCacheLoader, "ImageCacheLoader does not allocated")
+        XCTAssertNotNil(cache, "cache does not allocated")
     }
 
     func testLoadImage() {
@@ -35,10 +36,9 @@ class ImageCacheLoaderTests: XCTestCase {
     }
     
     func testCacheImage() {
-        imageCacheLoader.obtainImageWithPath(imagePath: URL.mockImageUrl().path) { image in
-            let cacheimage: UIImage? = self.cache.object(forKey: URL.mockImageUrl().path as NSString)
-            XCTAssertNil(cacheimage, "imageCacheLoader failed to load image into cache object")
-        }
+        let cacheimage: UIImage? = cache.object(forKey: URL.mockImageUrl().path as NSString)
+        XCTAssertNil(cacheimage, "failed to load image into cache object")
+   
     }
 
 }
